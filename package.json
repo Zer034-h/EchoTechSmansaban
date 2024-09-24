@@ -1,0 +1,8 @@
+{
+    "name": "esp32-temperature-logger",
+    "version": "1.0.0",
+    "dependencies": {
+      "faunadb": "^4.5.2"
+    }
+    
+}
