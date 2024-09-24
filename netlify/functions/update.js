@@ -1,3 +1,4 @@
+const fetch = require('node-fetch');
 const faunadb = require('faunadb')
 const q = faunadb.query
 
