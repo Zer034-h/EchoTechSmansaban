@@ -3,8 +3,7 @@
     "name": "esp32-temperature-logger",
     "version": "1.0.0",
     "dependencies": {
-      "faunadb": "^4.5.2",
-        "node-fetch": "^3.3.2"
+      "faunadb": "^4.5.2"
     }
     
 }
