@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EchoTechSMANSaban Temperature Input</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #f0f0f0;
+        }
+        .container {
+            background-color: white;
+            padding: 2rem;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+            text-align: center;
+        }
+        h1 {
+            color: #333;
+        }
+        input {
+            margin: 1rem 0;
+            padding: 0.5rem;
+            width: 100%;
+            box-sizing: border-box;
+        }
+        button {
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            padding: 0.5rem 1rem;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+        button:hover {
+            background-color: #45a049;
+        }
+        #result {
+            margin-top: 1rem;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>EchoTechSMANSaban</h1>
+        <h2>Temperature Input</h2>
+        <input type="number" id="temperature" step="0.1" placeholder="Enter temperature in Celsius">
+        <button onclick="submitTemperature()">Submit</button>
+        <div id="result"></div>
+    </div>
+
+    <script>
+        async function submitTemperature() {
+            const temperature = document.getElementById('temperature').value;
+            const resultDiv = document.getElementById('result');
+
+            if (!temperature) {
+                resultDiv.textContent = 'Please enter a temperature.';
+                return;
+            }
+
+            try {
+                const response = await fetch('/.netlify/functions/update-temperature', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({ temperature: parseFloat(temperature) }),
+                });
+
+                if (response.ok) {
+                    const data = await response.json();
+                    resultDiv.textContent = `Success: ${data.message}`;
+                } else {
+                    resultDiv.textContent = 'Error: Failed to submit temperature.';
+                }
+            } catch (error) {
+                resultDiv.textContent = `Error: ${error.message}`;
+            }
+        }
+    </script>
+</body>
+</html>
