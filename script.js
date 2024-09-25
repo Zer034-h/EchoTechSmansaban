@@ -8,7 +8,7 @@ const firebaseConfig = {
   projectId: "iot-monitoring-fe406",
   storageBucket: "iot-monitoring-fe406.appspot.com",
   messagingSenderId: "534573831564",
-  appId: "YOUR_APP_ID"
+  appId: "1:534578381564:web:6ed12537db0c135bf84d79"
 };
 
 // Initialize Firebase
