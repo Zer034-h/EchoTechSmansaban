@@ -33,4 +33,6 @@ function updateSensorData(snapshot) {
 const sensorRef = ref(database, 'sensor'); // Sesuaikan dengan jalur di Firebase
 onValue(sensorRef, (snapshot) => {
   updateSensorData(snapshot);
+}, (error) => {
+  console.error("Error fetching data: ", error);
 });
