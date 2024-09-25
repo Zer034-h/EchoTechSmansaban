@@ -1,13 +1,14 @@
 // Firebase Configuration
 const firebaseConfig = {
-  apiKey: "YOUR_FIREBASE_API_KEY",
-  authDomain: "YOUR_PROJECT_ID.firebaseapp.com",
-  databaseURL: "https://YOUR_PROJECT_ID.firebaseio.com",
-  projectId: "YOUR_PROJECT_ID",
-  storageBucket: "YOUR_PROJECT_ID.appspot.com",
-  messagingSenderId: "YOUR_MESSAGING_SENDER_ID",
-  appId: "YOUR_APP_ID"
+  apiKey: "AIzaSyAvRVu9RyCvxQvTu1iiy7mMDja26cACuTU",
+  authDomain: "iot-monitoring-fe406.firebaseapp.com",
+  databaseURL: "https://iot-monitoring-fe406-default-rtdb.asia-southeast1.firebasedatabase.app/",
+  projectId: "iot-monitoring-fe406",
+  storageBucket: "iot-monitoring-fe406.appspot.com",
+  messagingSenderId: "534573831564",
+  appId: "YOUR_APP_ID" // Anda bisa mendapatkan App ID dari Firebase Console (biasanya di bagian bawah di Project Settings)
 };
+
 
 // Initialize Firebase
 firebase.initializeApp(firebaseConfig);
