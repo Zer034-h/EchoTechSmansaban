@@ -1,3 +1,6 @@
+import { initializeApp } from "https://www.gstatic.com/firebasejs/9.0.0/firebase-app.js";
+import { getDatabase, ref, onValue } from "https://www.gstatic.com/firebasejs/9.0.0/firebase-database.js";
+
 const firebaseConfig = {
   apiKey: "AIzaSyAvRVu9RyCvxQvTu1iiy7mMDja26cACuTU",
   authDomain: "iot-monitoring-fe406.firebaseapp.com",
@@ -5,13 +8,12 @@ const firebaseConfig = {
   projectId: "iot-monitoring-fe406",
   storageBucket: "iot-monitoring-fe406.appspot.com",
   messagingSenderId: "534573831564",
-  appId: "1:534578381564:web:6ed12537db0c135bf84d79"
+  appId: "YOUR_APP_ID"
 };
-// Initialize Firebase
-firebase.initializeApp(firebaseConfig);
 
-// Reference to the Firebase Realtime Database
-const database = firebase.database();
+// Initialize Firebase
+const app = initializeApp(firebaseConfig);
+const database = getDatabase(app);
 
 // Fungsi untuk memperbarui data di halaman
 function updateSensorData(snapshot) {
@@ -28,4 +30,7 @@ function updateSensorData(snapshot) {
 }
 
 // Mendengarkan perubahan data di Firebase Realtime Database
-database.ref('/sensor').on('value', updateSensorData);
+const sensorRef = ref(database, 'sensor'); // Sesuaikan dengan jalur di Firebase
+onValue(sensorRef, (snapshot) => {
+  updateSensorData(snapshot);
+});
