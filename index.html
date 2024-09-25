@@ -3,34 +3,17 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Data Sensor Monitoring</title>
-  <link rel="stylesheet" href="styles.css">
+  <title>Firebase Sensor Monitoring</title>
 </head>
 <body>
-  <div class="container">
-    <h1>Data Sensor Monitoring</h1>
-    
-    <div class="sensor-data">
-      <div class="data-item">
-        <h2>pH: <span id="ph-value">Loading...</span></h2>
-      </div>
-      <div class="data-item">
-        <h2>Suhu: <span id="suhu-value">Loading...</span> °C</h2>
-      </div>
-      <div class="data-item">
-        <h2>Kekeruhan: <span id="kekeruhan-value">Loading...</span> NTU</h2>
-      </div>
-      <div class="data-item">
-        <h2>TDS: <span id="tds-value">Loading...</span> ppm</h2>
-      </div>
-      <div class="data-item">
-        <h2>Timestamp: <span id="timestamp-value">Loading...</span></h2>
-      </div>
-    </div>
-  </div>
+  <h1>Data Sensor Monitoring</h1>
+  <p>pH: <span id="ph-value">Loading...</span></p>
+  <p>Suhu: <span id="suhu-value">Loading...</span></p>
+  <p>Kekeruhan: <span id="kekeruhan-value">Loading...</span></p>
+  <p>TDS: <span id="tds-value">Loading...</span></p>
+  <p>Last Update: <span id="timestamp-value">Loading...</span></p>
 
-  <script src="https://www.gstatic.com/firebasejs/9.0.0/firebase-app.js"></script>
-  <script src="https://www.gstatic.com/firebasejs/9.0.0/firebase-database.js"></script>
-  <script src="script.js"></script>
+  <!-- Pastikan menggunakan type="module" -->
+  <script type="module" src="app.js"></script>
 </body>
 </html>
