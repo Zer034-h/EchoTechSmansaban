@@ -1,29 +1,32 @@
-const faunadb = require('faunadb')
-const q = faunadb.query
+// Firebase Configuration
+const firebaseConfig = {
+  apiKey: "YOUR_FIREBASE_API_KEY",
+  authDomain: "YOUR_PROJECT_ID.firebaseapp.com",
+  databaseURL: "https://YOUR_PROJECT_ID.firebaseio.com",
+  projectId: "YOUR_PROJECT_ID",
+  storageBucket: "YOUR_PROJECT_ID.appspot.com",
+  messagingSenderId: "YOUR_MESSAGING_SENDER_ID",
+  appId: "YOUR_APP_ID"
+};
 
-exports.handler = async (event, context) => {
-  const client = new faunadb.Client({ secret: process.env.FAUNADB_SECRET })
+// Initialize Firebase
+firebase.initializeApp(firebaseConfig);
+
+// Reference to the Firebase Realtime Database
+const database = firebase.database();
+
+// Function to update data on the webpage
+function updateSensorData(snapshot) {
+  const data = snapshot.val();
   
-  try {
-    const data = JSON.parse(event.body)
-    const temperature = data.temperature
-    
-    // Save data to FaunaDB
-    const result = await client.query(
-      q.Create(
-        q.Collection('temperatures'),
-        { data: { temperature, timestamp: new Date().toISOString() } }
-      )
-    )
-    
-    return {
-      statusCode: 200,
-      body: JSON.stringify({ message: "Data saved successfully", id: result.ref.id })
-    }
-  } catch (error) {
-    return {
-      statusCode: 500,
-      body: JSON.stringify({ error: "Failed to save data" })
-    }
-  }
+  document.getElementById('ph-value').innerText = data.ph || 'N/A';
+  document.getElementById('suhu-value').innerText = data.suhu || 'N/A';
+  document.getElementById('kekeruhan-value').innerText = data.kekeruhan || 'N/A';
+  document.getElementById('tds-value').innerText = data.tds || 'N/A';
+  
+  const date = new Date(data.timestamp * 1000); // Convert timestamp to readable date
+  document.getElementById('timestamp-value').innerText = date.toLocaleString();
 }
+
+// Listen for changes in the Firebase Realtime Database
+database.ref('/sensor_data').limitToLast(1).on('child_added', updateSensorData);
