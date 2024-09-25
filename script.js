@@ -24,9 +24,7 @@ function updateSensorData(snapshot) {
   document.getElementById('suhu-value').innerText = data.suhu || 'N/A';
   document.getElementById('kekeruhan-value').innerText = data.kekeruhan || 'N/A';
   document.getElementById('tds-value').innerText = data.tds || 'N/A';
-  
-  const date = new Date(data.timestamp * 1000); // Mengubah timestamp ke format waktu yang bisa dibaca
-  document.getElementById('timestamp-value').innerText = date.toLocaleString();
+  document.getElementById('timestamp-value').innerText = date.waktu || 'N/A';
 }
 
 // Mendengarkan perubahan data di Firebase Realtime Database
