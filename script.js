@@ -1,4 +1,3 @@
-// Firebase Configuration
 const firebaseConfig = {
   apiKey: "AIzaSyAvRVu9RyCvxQvTu1iiy7mMDja26cACuTU",
   authDomain: "iot-monitoring-fe406.firebaseapp.com",
@@ -6,9 +5,8 @@ const firebaseConfig = {
   projectId: "iot-monitoring-fe406",
   storageBucket: "iot-monitoring-fe406.appspot.com",
   messagingSenderId: "534573831564",
-  appId: "1:534578381564:web:6ed12537db0c135bf84d79" // Anda bisa mendapatkan App ID dari Firebase Console (biasanya di bagian bawah di Project Settings)
+  appId: "1:534578381564:web:6ed12537db0c135bf84d79"
 };
-
 
 // Initialize Firebase
 firebase.initializeApp(firebaseConfig);
@@ -30,4 +28,4 @@ function updateSensorData(snapshot) {
 }
 
 // Listen for changes in the Firebase Realtime Database
-database.ref('/sensor_data').limitToLast(1).on('child_added', updateSensorData);
+database.ref('/sensor').on('value', updateSensorData);
