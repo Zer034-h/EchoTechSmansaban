@@ -24,9 +24,39 @@ function updateSensorData(snapshot) {
   document.getElementById('suhu-value').innerText = data.suhu || 'N/A';
   document.getElementById('kekeruhan-value').innerText = data.kekeruhan || 'N/A';
   document.getElementById('tds-value').innerText = data.tds || 'N/A';
-  document.getElementById('timestamp-value').innerText = date.waktu || 'N/A';
 }
 
+function tampilkanWaktuInternet() {
+    // URL untuk zona waktu Jakarta (WIB), bisa diganti untuk zona WITA atau WIT
+    const url = "http://worldtimeapi.org/api/timezone/Asia/Jakarta";
+
+    // Mengambil data dari API
+    fetch(url)
+        .then(response => response.json())
+        .then(data => {
+            const dateTime = new Date(data.datetime); // Mendapatkan waktu dari response API
+            const jam = dateTime.getHours();
+            const menit = dateTime.getMinutes();
+            const detik = dateTime.getSeconds();
+
+            // Menambahkan 0 di depan angka jika kurang dari 10
+            const waktuSekarang =
+                (jam < 10 ? "0" + jam : jam) + ":" +
+                (menit < 10 ? "0" + menit : menit) + ":" +
+                (detik < 10 ? "0" + detik : detik);
+
+            // Menampilkan waktu di elemen HTML
+            document.getElementById("waktu").textContent = waktuSekarang;
+        })
+        .catch(error => {
+            console.error("Gagal mengambil waktu dari API:", error);
+        });
+}
+
+setInterval(tampilkanWaktuInternet, 1000);
+
+// Menampilkan waktu internet saat halaman dimuat
+tampilkanWaktuInternet();
 // Mendengarkan perubahan data di Firebase Realtime Database
 const sensorRef = ref(database, 'sensor'); // Sesuaikan dengan jalur di Firebase
 onValue(sensorRef, (snapshot) => {
