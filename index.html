@@ -1,19 +1,50 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Firebase Sensor Monitoring</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EchoTechSmansa</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <h1>Data Sensor Monitoring</h1>
-  <p>pH: <span id="ph-value">Loading...</span></p>
-  <p>Suhu: <span id="suhu-value">Loading...</span></p>
-  <p>Kekeruhan: <span id="kekeruhan-value">Loading...</span></p>
-  <p>TDS: <span id="tds-value">Loading...</span></p>
-  <p>Last Update: <span id="timestamp-value">Loading...</span></p>
+    <nav>
+        <div class="wrapper">
+            <div class="logo"><a>EchoTech Smansa</a></div>
+            <a href="#" class="tombol-menu">
+                <span class="garis"></span>
+                <span class="garis"></span>
+                <span class="garis"></span>
+            </a>
+            <div class="menu">
+                <ul>
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#courses">Courses</a></li>
+                    <li><a href="#tutors">Tutors</a></li>
+                    <li><a href="#partners">Partners</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <div class="wrapper">
+        <!-- untuk home -->
+        <section id="home">
+            <img src="https://img.freepik.com/free-vector/web-development-programmer-engineering-coding-website-augmented-reality-interface-screens-developer-project-engineer-programming-software-application-design-cartoon-illustration_107791-3863.jpg?size=626&ext=jpg&ga=GA1.2.1769275626.1605867161"/>
+            <div class="kolom">
+                <p class="deskripsi">INTERNET OF THINK</p>
+                <h2>Monitoring kualitas Air</h2>
+                <p>hai!, Selamat datang di Website Monitoring kualitas air berbasis iot yang menghasilkan pembacaan ph, suhu, tds, kekeruhan.</p>
+                <p><a class="tbl-pink">lorem</a></p>
+            </div>
+        </section>
 
-  <!-- Pastikan menggunakan type="module" -->
-  <script type="module" src="script.js"></script>
+        <div class="data"> 
+            <h3>pH: <span id="ph-value">Loading...</span></h3>
+            <h3>Suhu: <span id="suhu-value">Loading...</span> °C</h3>
+            <h3>Kekeruhan: <span id="kekeruhan-value">Loading...</span> NTU</h3>
+            <h3>TDS: <span id="tds-value">Loading...</span> ppm</h3>
+            <h3>Last Update: <span  id="waktu">Loading...</span></h3>
+        </div>
+        <script type="module" src="script.js"></script>
 </body>
 </html>
