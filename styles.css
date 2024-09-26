@@ -72,15 +72,18 @@ section {
     margin-bottom: 50px;
 }
 
-.data h3 {
+.data {
     margin-top: 20px;
     margin-bottom: 20px;
-    text-align: left;
-    font-family: Arial, sans-serif;
     background-color: #dddddd75;
     padding: 30px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    border-radius: 8px;
+    border-radius: 8px; 
+}
+
+.data h3 {
+    text-align: left;
+    font-family: Arial, sans-serif;
 }
 
 .kolom {
@@ -217,58 +220,21 @@ h3 {
     .wrapper {
         width: 90%;
     }
-
     .logo a {
         display: block;
         width: 100%;
         text-align: center;
     }
-
-    nav .menu {
-        width: 100%;
-        margin: 0;
-    }
-
-    nav .menu ul {
-        text-align: center;
-        margin: auto;
-        line-height: 60px;
-    }
-
-    nav .menu ul li {
-        display: inline-block;
-        float: none;
-    }
-
     section {
         display: block;
     }
-
     section img {
         display: block;
         width: 100%;
         height: auto;
     }
-
-    .kartu-tutor {
-        width: 50%;
-    }
-
-    .kartu-partner {
-        width: 50%;
-    }
 }
 
-.tombol-menu {
-    position: absolute;
-    top: 1.7rem;
-    right: 1rem;
-    display: none;
-    flex-direction: column;
-    justify-content: space-between;
-    width: 30px;
-    height: 20px;
-}
 
 .tombol-menu .garis {
     height: 3px;
