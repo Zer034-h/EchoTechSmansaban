@@ -15,6 +15,61 @@ const firebaseConfig = {
 const app = initializeApp(firebaseConfig);
 const database = getDatabase(app);
 
+// Inisialisasi chart
+const ctx = document.getElementById('myChart').getContext('2d');
+const myChart = new Chart(ctx, {
+    type: 'line',
+    data: {
+        labels: [], // Label kosong akan diisi dengan data real-time
+        datasets: [
+            {
+                label: 'pH',
+                data: [],
+                borderColor: 'blue',
+                fill: false,
+                tension: 0.1
+            },
+            {
+                label: 'Suhu (°C)',
+                data: [],
+                borderColor: 'red',
+                fill: false,
+                tension: 0.1
+            },
+            {
+                label: 'Kekeruhan (NTU)',
+                data: [],
+                borderColor: 'green',
+                fill: false,
+                tension: 0.1
+            },
+            {
+                label: 'TDS (ppm)',
+                data: [],
+                borderColor: 'purple',
+                fill: false,
+                tension: 0.1
+            }
+        ]
+    },
+    options: {
+        scales: {
+            x: {
+                title: {
+                    display: true,
+                    text: 'Waktu'
+                }
+            },
+            y: {
+                title: {
+                    display: true,
+                    text: 'Nilai'
+                }
+            }
+        }
+    }
+});
+
 // Fungsi untuk memperbarui data di halaman
 function updateSensorData(snapshot) {
   const data = snapshot.val();
@@ -24,6 +79,25 @@ function updateSensorData(snapshot) {
   document.getElementById('suhu-value').innerText = data.suhu || 'N/A';
   document.getElementById('kekeruhan-value').innerText = data.kekeruhan || 'N/A';
   document.getElementById('tds-value').innerText = data.tds || 'N/A';
+
+  // Tambahkan label waktu (misalnya dalam detik atau timestamp real-time)
+  const timestamp = new Date().toLocaleTimeString();
+  myChart.data.labels.push(timestamp);
+  
+  // Memperbarui dataset dengan nilai baru
+  myChart.data.datasets[0].data.push(data.ph);
+  myChart.data.datasets[1].data.push(data.suhu);
+  myChart.data.datasets[2].data.push(data.kekeruhan);
+  myChart.data.datasets[3].data.push(data.tds);
+  
+  // Batasi jumlah data yang ditampilkan (misal 10 data terakhir)
+  if (myChart.data.labels.length > 10) {
+      myChart.data.labels.shift();
+      myChart.data.datasets.forEach(dataset => dataset.data.shift());
+      }
+  
+  // Update chart untuk menampilkan data baru
+  myChart.update();
 }
 
 function tampilkanWaktuInternet() {
