@@ -30,21 +30,21 @@ const myChart = new Chart(ctx, {
                 tension: 0.1
             },
             {
-                label: 'Suhu (°C)',
+                label: ' °C',
                 data: [],
                 borderColor: 'red',
                 fill: false,
                 tension: 0.1
             },
             {
-                label: 'Kekeruhan (NTU)',
+                label: 'NTU',
                 data: [],
                 borderColor: 'green',
                 fill: false,
                 tension: 0.1
             },
             {
-                label: 'TDS (ppm)',
+                label: 'ppm',
                 data: [],
                 borderColor: 'purple',
                 fill: false,
